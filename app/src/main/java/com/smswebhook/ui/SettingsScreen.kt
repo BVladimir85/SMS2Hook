@@ -100,7 +100,7 @@ fun SettingsScreen(vm: AppViewModel, onBack: () -> Unit) {
 
             Text("О приложении", style = MaterialTheme.typography.titleMedium)
             Text(
-                "SMS → Webhook пересылает входящие SMS на HTTP-эндпоинты по пресетам. " +
+                "SMS2Hook пересылает входящие SMS на HTTP-эндпоинты по пресетам. " +
                     "Пресеты и токены хранятся только на устройстве.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
