@@ -13,7 +13,7 @@ enum class TemplateEscape { RAW, URL, JSON }
  * matches the destination context (URL query, JSON string literal, or raw).
  */
 object TemplateEngine {
-    private val TOKEN = Regex("\\{([a-zA-Z_][a-zA-Z0-9_]*)}")
+    private val TOKEN = Regex("\\{([a-zA-Z_][a-zA-Z0-9_]*)\\}")
 
     fun render(template: String, vars: Map<String, String>, escape: TemplateEscape): String {
         if (template.isEmpty()) return template
