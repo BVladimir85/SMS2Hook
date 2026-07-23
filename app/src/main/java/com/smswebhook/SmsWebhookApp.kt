@@ -14,8 +14,31 @@ class SmsWebhookApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        installCrashHandler()
         createNotificationChannel()
         seedDefaultsIfEmpty()
+    }
+
+    private fun installCrashHandler() {
+        val previous = Thread.getDefaultUncaughtExceptionHandler()
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            try {
+                val sw = java.io.StringWriter()
+                throwable.printStackTrace(java.io.PrintWriter(sw))
+                val intent = android.content.Intent(this, CrashActivity::class.java).apply {
+                    addFlags(
+                        android.content.Intent.FLAG_ACTIVITY_NEW_TASK or
+                            android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK,
+                    )
+                    putExtra("trace", sw.toString())
+                }
+                startActivity(intent)
+            } catch (_: Throwable) {
+                previous?.uncaughtException(thread, throwable)
+            }
+            android.os.Process.killProcess(android.os.Process.myPid())
+            kotlin.system.exitProcess(1)
+        }
     }
 
     private fun createNotificationChannel() {

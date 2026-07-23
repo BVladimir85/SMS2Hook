@@ -23,7 +23,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -113,7 +112,11 @@ fun PresetEditScreen(
             Text("HTTP-метод", style = MaterialTheme.typography.labelLarge)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 HttpMethod.ALL.forEach { m ->
-                    FilterChip(selected = method == m, onClick = { method = m }, label = { Text(m) })
+                    if (m == method) {
+                        Button(onClick = { method = m }) { Text(m) }
+                    } else {
+                        OutlinedButton(onClick = { method = m }) { Text(m) }
+                    }
                 }
             }
 
@@ -133,11 +136,11 @@ fun PresetEditScreen(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     BodyMode.ALL.forEach { mode ->
-                        FilterChip(
-                            selected = bodyMode == mode,
-                            onClick = { bodyMode = mode },
-                            label = { Text(BodyMode.label(mode)) },
-                        )
+                        if (mode == bodyMode) {
+                            Button(onClick = { bodyMode = mode }) { Text(BodyMode.label(mode)) }
+                        } else {
+                            OutlinedButton(onClick = { bodyMode = mode }) { Text(BodyMode.label(mode)) }
+                        }
                     }
                 }
             }
