@@ -9,6 +9,10 @@ Android-приложение, которое пересылает **входящ
 
 ---
 
+<img width="450" height="1024" alt="screen_1" src="https://github.com/user-attachments/assets/7993dcf0-adf8-453f-bd6d-d3f3b5df9dbf" /> <img width="450" height="1024" alt="screen_2" src="https://github.com/user-attachments/assets/48099beb-d60d-490f-8d94-88a4ab1020bf" /> <img width="450" height="1024" alt="screen_3" src="https://github.com/user-attachments/assets/89ba0420-3b3e-4a46-8b52-6fb177e7a2a6" /> <img width="450" height="1024" alt="screen_4" src="https://github.com/user-attachments/assets/37c1fc80-bad8-4d2b-a1a9-d7487fcdd772" />
+
+---
+
 ## Возможности
 
 - Перехват всех входящих SMS (в т.ч. длинных/составных — собираются в одно).
